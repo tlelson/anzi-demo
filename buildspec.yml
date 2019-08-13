@@ -6,9 +6,11 @@ env:
     ARTIFACT_BUCKET: "teal-ml-lambda-bucket"
 
 phases:
-  #install:
-    #commands:
-      #- pip install --upgrade awscli
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - pip install --upgrade awscli
   build:
     commands:
       aws cloudformation package \
