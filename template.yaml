@@ -1,0 +1,24 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Basic application to demonstrate development workflow
+Globals:
+  Function:
+    Runtime: python3.7
+    Timeout: 5
+    MemorySize: 128
+    Environment:
+      Variables:
+        BUCKET: !Ref Bucket
+        STACKNAME: !Ref AWS::StackName
+        DATA_TABLE: !Ref Table
+Resources:
+  ping:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambdas/
+      Handler: ping.main
+  Table:
+    Type: AWS::Serverless::SimpleTable
+  Bucket:
+    Type: AWS::S3::Bucket
