@@ -9,7 +9,7 @@ phases:
   install:
     runtime-versions:
       python: 3.7
-    #commands:
+    commands:
       #- pip install --upgrade awscli
       - pip install --upgrade pytest
   build:
