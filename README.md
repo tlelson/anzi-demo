@@ -18,14 +18,4 @@ this is a request to merge your branch into the `master`.
 ## Build Pipeline
 The act of updating the `master` branch will trigger the build process.  In this case the lambda will be deployed.  We can observe this process in [AWS Codebuild](https://incomplete)
 
-ARTIFACT_BUCKET=teal-ml-lambda-bucket
-aws cloudformation package \
-    --template-file template.yaml \
-    --s3-bucket ${ARTIFACT_BUCKET} \
-    --s3-prefix anzi-demo  \
-    --output-template /tmp/packaged.yaml
-aws cloudformation deploy \
-    --capabilities CAPABILITY_IAM \
-    --template-file /tmp/packaged.yaml \
-    --stack-name anzi-demo-stack
 
