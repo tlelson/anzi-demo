@@ -11,17 +11,19 @@ phases:
       python: 3.7
     #commands:
       #- pip install --upgrade awscli
+      - pip install --upgrade pytest
   build:
     commands:
-      - "aws cloudformation package \
-          --template-file template.yaml \
-          --s3-bucket ${ARTIFACT_BUCKET} \
-          --s3-prefix anzi-demo  \
-          --output-template /tmp/packaged.yaml"
-      - "aws cloudformation deploy \
-          --capabilities CAPABILITY_IAM \
-          --template-file /tmp/packaged.yaml \
-          --stack-name anzi-demo-stack"
+      - pytest tests.py
+      #- "aws cloudformation package \
+          #--template-file template.yaml \
+          #--s3-bucket ${ARTIFACT_BUCKET} \
+          #--s3-prefix anzi-demo  \
+          #--output-template /tmp/packaged.yaml"
+      #- "aws cloudformation deploy \
+          #--capabilities CAPABILITY_IAM \
+          #--template-file /tmp/packaged.yaml \
+          #--stack-name anzi-demo-stack"
 artifacts:
   files:
     - /tmp/packaged.yaml
