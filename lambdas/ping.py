@@ -43,7 +43,7 @@ def main(event, context):
         for transaction in _prepare_for_batch(body['transactions']):
             batch.put_item(Item=transaction)
 
-    return 0
+    return 1
 
 if __name__ == '__main__':
     main({}, {})
